@@ -763,7 +763,7 @@ public class MProduct extends X_M_Product implements I_M_Product
 			}
 		}
 
-		return null;
+		return new DefaultProductPricingFactory().newProductPricingInstance();
 	}
 
 }	//	MProduct
