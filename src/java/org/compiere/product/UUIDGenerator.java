@@ -13,6 +13,7 @@
  *****************************************************************************/
 package org.compiere.product;
 
+import org.compiere.model.IProcessInfoParameter;
 import org.compiere.orm.MColumn;
 import org.compiere.orm.MTable;
 import org.compiere.orm.M_Element;
@@ -51,7 +52,7 @@ public class UUIDGenerator extends SvrProcess {
 	 */
 	@Override
 	protected void prepare() {
-		for(ProcessInfoParameter param : getParameter()) {
+		for(IProcessInfoParameter param : getParameter()) {
 			if (param.getParameter() == null)
 				;
 			else if (param.getParameterName().equals("TableName"))
