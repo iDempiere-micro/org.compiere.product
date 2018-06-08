@@ -20,6 +20,8 @@ package org.compiere.product;
 import java.sql.ResultSet;
 import java.util.Properties;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.compiere.model.I_M_PriceList;
 import org.compiere.orm.MTable;
 import org.compiere.orm.PO;
@@ -85,6 +87,7 @@ public class X_M_PriceList extends PO implements I_M_PriceList, I_Persistent
       return sb.toString();
     }
 
+	@JsonIgnore
 	public org.compiere.model.I_M_PriceList getBasePriceList() throws RuntimeException
     {
 		return (org.compiere.model.I_M_PriceList)MTable.get(getCtx(), org.compiere.model.I_M_PriceList.Table_Name)
