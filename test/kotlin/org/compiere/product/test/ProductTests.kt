@@ -1,6 +1,9 @@
 import org.compiere.orm.DefaultModelFactory
 import org.compiere.orm.IModelFactory
 import org.compiere.product.MProduct
+import org.compiere.product.test.DatabaseImpl
+import org.compiere.product.test.DummyEventManager
+import org.compiere.product.test.DummyService
 import org.idempiere.common.db.CConnection
 import org.idempiere.common.db.Database
 import org.idempiere.common.util.CLogger
@@ -16,11 +19,13 @@ import kotlin.test.assertNotNull
 class ProductTests {
     @Test
     fun getUsingDefaultModelFactoryById() {
+        DummyService.setup()
+        DummyEventManager.setup()
         Ini.getIni().isClient = false
         CLogger.getCLogger(ProductTests::class.java)
         Ini.getIni().properties
         val db = Database()
-        db.setDatabase(DB_PostgreSQL())
+        db.setDatabase(DatabaseImpl())
         DB.setDBTarget(CConnection.get(null))
         DB.isConnected()
 
